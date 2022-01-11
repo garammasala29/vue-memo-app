@@ -5,20 +5,14 @@
   <article>
     <table>
       <tr v-for='memo in memos' :key='memo.id'>
-        <router-link :to='`/memos/${memo.id}`' @click='toggleDetail'>
+        <router-link :to='`/memos/${memo.id}`'>
           <td>{{ memo.title }}</td>
         </router-link>
       </tr>
     </table>
     <router-link to='/memos/new'>
-      <button @click='toggleAddForm'>＋</button>
+      <button>＋</button>
     </router-link>
-    <div v-if='showDetail'>
-      <MemoDetail @close='toggleDetail' />
-    </div>
-    <div v-if='showAddForm'>
-      <MemoAddForm @close='toggleAddForm' />
-    </div>
   </article>
   <footer>
     <p class='footer-text'>&copy;garammasala 2022</p>
@@ -26,34 +20,17 @@
 </template>
 
 <script>
-import MemoDetail from '../components/MemoDetail.vue'
-import MemoAddForm from '../components/MemoAddForm'
-
 export default {
   name: 'Home',
-  components: {
-    MemoDetail,
-    MemoAddForm
-  },
   data () {
     return {
       memos: [],
-      showDetail: false,
-      showAddForm: false
     }
   },
   mounted () {
     if (localStorage.getItem('memos-vuejs')) {
       this.memos = JSON.parse(localStorage.getItem('memos-vuejs'))
       return this.memos
-    }
-  },
-  methods: {
-    toggleAddForm() {
-      this.showAddForm = !this.showAddForm
-    },
-    toggleDetail() {
-      this.showDetail = !this.showDetail
     }
   }
 }
