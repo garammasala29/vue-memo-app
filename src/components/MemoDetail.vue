@@ -3,10 +3,10 @@
     <div class="modal">
       <h2>Memo Detail</h2>
       <label>
-        <input placeholder="Title" v-model='memo.title'>
+        <input placeholder="Title" v-model='this.memo.title'>
       </label>
       <label>
-        <textarea placeholder="Content" v-model='memo.content'></textarea>
+        <textarea placeholder="Content" v-model='this.memo.content'></textarea>
       </label>
       <button @click='editMemo()'>Edit</button>
       <button @click='deleteMemo()'>Delete</button>
@@ -20,25 +20,27 @@ export default {
   data () {
     const data = {
       memos: [],
-      memo: [],
-      id: '',
-      title: '',
-      content: '',
+      memo: {
+        id: '',
+        title: '',
+        content: ''
+      }
     }
     return data
   },
   mounted () {
     if (localStorage.getItem('memos-vuejs')) {
       this.memos = JSON.parse(localStorage.getItem('memos-vuejs'))
-      this.memo = this.memos.filter(memo => {
-        return memo.id == this.$route.params.id
-      })[0]
+      this.memo = this.memos.find((memo) => { return memo.id == this.$route.params.id })
     }
   },
   methods: {
     editMemo () {
-      this.title = this.title.trim()
-      this.content = this.content.trim()
+      this.memo.title = this.memo.title.trim()
+      this.memo.content = this.memo.content.trim()
+      if (!this.memo.title) {
+        return  this.$router.push('/')
+      }
       this.saveMemo(this.memos)
     },
     deleteMemo () {
