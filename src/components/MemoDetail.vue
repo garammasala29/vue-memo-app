@@ -44,8 +44,7 @@ export default {
       this.saveMemo(this.memos)
     },
     deleteMemo () {
-      const index = this.memos.findIndex(idx => idx.id == this.memo.id)
-      this.memos.splice(index, 1)
+      this.memos = this.memos.filter(memo => memo.id != this.memo.id)
       this.saveMemo(this.memos)
     },
     closeDetail () {
