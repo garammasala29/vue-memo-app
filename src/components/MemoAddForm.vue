@@ -37,9 +37,7 @@ export default {
       if (!this.title) {
         return  this.$router.push('/')
       }
-      const maxId = this.memos.reduce((a, b) => {
-        return a > b.id ? a : b.id
-      }, 0)
+      const maxId = Math.max(...this.memos.map(memo => memo.id), 0)
       this.memos.push({
         id: maxId + 1,
         title: this.title,
@@ -54,7 +52,7 @@ export default {
     saveMemo (memos) {
       localStorage.setItem('memos-vuejs', JSON.stringify(memos))
       this.$router.push('/')
-    },
+    }
   }
 }
 </script>
