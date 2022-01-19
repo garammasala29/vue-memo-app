@@ -1,7 +1,7 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import Home from '../views/Home'
-import MemoAddForm from '../components/MemoAddForm'
-import MemoDetail from '../components/MemoDetail'
+import MemoAddForm from '../views/MemoAddForm'
+import MemoDetail from '../views/MemoDetail'
 import NotFound from '../views/NotFound'
 
 const routes = [
