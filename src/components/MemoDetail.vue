@@ -39,7 +39,8 @@ export default {
       this.memo.title = this.memo.title.trim()
       this.memo.content = this.memo.content.trim()
       if (!this.memo.title) {
-        return  this.$router.push('/')
+        alert('Title is required.')
+        return  this.$router.push(`/memos/${this.memo.id}`)
       }
       this.saveMemo(this.memos)
     },

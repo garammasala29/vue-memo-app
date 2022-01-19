@@ -35,7 +35,8 @@ export default {
       this.title = this.title.trim()
       this.content = this.content.trim()
       if (!this.title) {
-        return  this.$router.push('/')
+        alert('Title is required.')
+        return  this.$router.push('/memos/new')
       }
       const maxId = Math.max(...this.memos.map(memo => memo.id), 0)
       this.memos.push({
