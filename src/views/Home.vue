@@ -30,7 +30,6 @@ export default {
   mounted () {
     if (localStorage.getItem('memos-vuejs')) {
       this.memos = JSON.parse(localStorage.getItem('memos-vuejs'))
-      return this.memos
     }
   }
 }
