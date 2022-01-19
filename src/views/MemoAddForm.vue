@@ -47,7 +47,6 @@ export default {
       this.saveMemo(this.memos)
     },
     closeAddForm () {
-      // this.$emit('close')
       this.$router.push('/')
     },
     saveMemo (memos) {
