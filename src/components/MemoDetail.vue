@@ -49,7 +49,6 @@ export default {
       this.saveMemo(this.memos)
     },
     closeDetail () {
-      this.$emit('close')
       this.$router.push('/')
     },
     saveMemo (memos) {
