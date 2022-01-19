@@ -2,7 +2,7 @@ import { createRouter, createWebHistory } from 'vue-router'
 import Home from '../views/Home'
 import MemoAddForm from '../components/MemoAddForm'
 import MemoDetail from '../components/MemoDetail'
-import NotFound from '../views/Notfound'
+import NotFound from '../views/NotFound'
 
 const routes = [
   {
