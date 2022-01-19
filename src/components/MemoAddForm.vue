@@ -8,7 +8,7 @@
         <label>
           <textarea placeholder="Content" v-model='content'></textarea>
         </label>
-        <button @click='addMemo()'>Add</button>
+        <button @click='addMemo'>Add</button>
     </div>
   </div>
 </template>

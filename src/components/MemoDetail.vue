@@ -8,8 +8,8 @@
       <label>
         <textarea placeholder="Content" v-model='this.memo.content'></textarea>
       </label>
-      <button @click='editMemo()'>Edit</button>
-      <button @click='deleteMemo()'>Delete</button>
+      <button @click='editMemo'>Edit</button>
+      <button @click='deleteMemo'>Delete</button>
     </div>
   </div>
 </template>
