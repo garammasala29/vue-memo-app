@@ -3,10 +3,10 @@
     <div class="modal">
       <h2>Memo Detail</h2>
       <label>
-        <input placeholder="Title" v-model='this.memo.title'>
+        <input placeholder="Title" v-model='memo.title'>
       </label>
       <label>
-        <textarea placeholder="Content" v-model='this.memo.content'></textarea>
+        <textarea placeholder="Content" v-model='memo.content'></textarea>
       </label>
       <button @click='editMemo'>Edit</button>
       <button @click='deleteMemo'>Delete</button>
@@ -31,7 +31,7 @@ export default {
   mounted () {
     if (localStorage.getItem('memos-vuejs')) {
       this.memos = JSON.parse(localStorage.getItem('memos-vuejs'))
-      this.memo = this.memos.find((memo) => { return memo.id == this.$route.params.id })
+      this.memo = this.memos.find((memo) => memo.id == this.$route.params.id)
     }
   },
   methods: {
