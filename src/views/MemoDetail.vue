@@ -34,13 +34,21 @@ export default {
       this.memo = this.memos.find((memo) => memo.id == this.$route.params.id)
     }
   },
+  beforeRouteEnter(to, from, next) {
+    const memos = JSON.parse(localStorage.getItem('memos-vuejs'))
+    if (!memos) next({path: '/:catchAll(.*)'})
+    const id = memos.find((m) => m.id == to.params.id)
+    if (!id) next({path: '/:catchAll(.*)'})
+
+    next()
+  },
   methods: {
     editMemo () {
       this.memo.title = this.memo.title.trim()
       this.memo.content = this.memo.content.trim()
       if (!this.memo.title) {
         alert('Title is required.')
-        return  this.$router.push(`/memos/${this.memo.id}`)
+        return this.$router.push(`/memos/${this.memo.id}`)
       }
       this.saveMemo(this.memos)
     },
