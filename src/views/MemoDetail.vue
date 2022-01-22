@@ -36,9 +36,9 @@ export default {
   },
   beforeRouteEnter(to, from, next) {
     const memos = JSON.parse(localStorage.getItem('memos-vuejs'))
-    if (!memos) next({path: '/:catchAll(.*)'})
-    const id = memos.find((m) => m.id == to.params.id)
-    if (!id) next({path: '/:catchAll(.*)'})
+    if (!memos) next({path: '/not_found'})
+    const memo = memos.find((m) => m.id == to.params.id)
+    if (!memo) next({path: '/not_found'})
 
     next()
   },
